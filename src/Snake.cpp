@@ -29,7 +29,9 @@ bool Snake::isHead(const unsigned int x, const unsigned int y)
 
 bool Snake::ateFood(Node &foodPosition)
 {
-    bool ate = this->body[0].x == foodPosition.x && this->body[0].y == foodPosition.y;
+    // Not only the head can eat: if the snake just ate, the head is "updated" when
+    // the snake's last node steps on food, but in the meantime it can eat a new food!
+    bool ate = this->hasBodyPartIn(foodPosition.x, foodPosition.y);
     if (ate)
     {
         this->body.insert(this->body.begin(), Node(foodPosition.x, foodPosition.y, body[0].lastDirection));

@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game(const unsigned int width, const unsigned int height, Node startingPoint) : width(width), height(height), gameLost(false)
+Game::Game(const unsigned int width, const unsigned int height, Node startingPoint) : width(width), height(height), gameLost(false), endGame(false)
 {
     this->snake = new Snake(startingPoint, width, height);
     putRandomFood();
@@ -42,8 +42,11 @@ void Game::getInput()
 void Game::putRandomFood()
 {
     srand(time(NULL));
-    food.x = rand() % width;
-    food.y = rand() % height;
+    do
+    {
+        food.x = rand() % width;
+        food.y = rand() % height;
+    } while (this->snake->hasBodyPartIn(food.x, food.y));
 }
 
 void Game::checkSnakeOnFood()
@@ -56,16 +59,18 @@ void Game::checkSnakeOnFood()
 
 void Game::checkSnakeOnItself()
 {
-    if (this->snake->onItself())
-    {
-        this->gameLost = true;
-    }
+    this->gameLost = this->endGame = this->snake->onItself();
     return;
 }
 
 bool Game::notEnded()
 {
-    return !gameLost;
+    return !endGame;
+}
+
+bool Game::lost()
+{
+    return gameLost;
 }
 
 void Game::printField()
@@ -82,7 +87,7 @@ void Game::printField()
         {
             if (food.x == x && food.y == y)
             {
-                ss << "A";
+                ss << "*";
             }
             else
             {

@@ -1,0 +1,52 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-02-24 20:10+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/Utils.hpp:16
+msgid "1 - Easy"
+msgstr ""
+
+#: src/Utils.hpp:17
+msgid "2 - Medium (Default)"
+msgstr ""
+
+#: src/Utils.hpp:18
+msgid "3 - Hard"
+msgstr ""
+
+#: src/Utils.hpp:44
+msgid "Feel free to contribute at https://github.com/luco5826/snake"
+msgstr ""
+
+#: src/Utils.hpp:12
+msgid ""
+"For an optimal experience, set your window size to 60x20 and zoom a little "
+"bit!"
+msgstr ""
+
+#: src/Utils.hpp:15
+msgid "Select the difficulty:"
+msgstr ""
+
+#: src/Utils.hpp:40
+msgid "YOU STEPPED ON YOURSELF AND DIED!"
+msgstr ""
+
+#: src/Utils.hpp:43
+msgid "You played SNAKE - by Luca Errani"
+msgstr ""

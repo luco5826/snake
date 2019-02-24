@@ -13,7 +13,7 @@ class Game
     Snake* snake;
     unsigned int width, height;
     Node food;
-    bool gameLost;
+    bool gameLost, endGame;
     
 
     public:
@@ -25,6 +25,7 @@ class Game
     void checkSnakeOnFood();
     void checkSnakeOnItself();
     bool notEnded();
+    bool lost();
     void printField();
 };
 
