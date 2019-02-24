@@ -1,9 +1,14 @@
 #include "Game.h"
 
-Game::Game(const unsigned int width, const unsigned int height, Node startingPoint) : width(width), height(height)
+Game::Game(const unsigned int width, const unsigned int height, Node startingPoint) : width(width), height(height), gameLost(false)
 {
-    this->snake = new Snake(startingPoint);
+    this->snake = new Snake(startingPoint, width, height);
     putRandomFood();
+}
+
+Game::~Game()
+{
+    delete this->snake;
 }
 
 void Game::getInput()
@@ -30,6 +35,7 @@ void Game::getInput()
     }
 
     this->checkSnakeOnFood();
+    this->checkSnakeOnItself();
     this->snake->updateDirections();
 }
 
@@ -46,6 +52,20 @@ void Game::checkSnakeOnFood()
     {
         putRandomFood();
     }
+}
+
+void Game::checkSnakeOnItself()
+{
+    if (this->snake->onItself())
+    {
+        this->gameLost = true;
+    }
+    return;
+}
+
+bool Game::notEnded()
+{
+    return !gameLost;
 }
 
 void Game::printField()
@@ -68,7 +88,14 @@ void Game::printField()
             {
                 if (this->snake->hasBodyPartIn(x, y))
                 {
-                    ss << "o";
+                    if (this->snake->isHead(x, y))
+                    {
+                        ss << "O";
+                    }
+                    else
+                    {
+                        ss << "o";
+                    }
                 }
                 else
                 {

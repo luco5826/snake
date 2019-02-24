@@ -13,6 +13,7 @@ class Game
     Snake* snake;
     unsigned int width, height;
     Node food;
+    bool gameLost;
     
 
     public:
@@ -22,6 +23,8 @@ class Game
     void getInput();
     void putRandomFood();
     void checkSnakeOnFood();
+    void checkSnakeOnItself();
+    bool notEnded();
     void printField();
 };
 

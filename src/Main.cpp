@@ -15,19 +15,21 @@ int main()
         refresh();      // Refresh the screen
         attron(A_BOLD); // Set font to BOLD
         nodelay(stdscr, true);
+        // wresize(stdscr, 20, 20);
+        resize_term(20, 20);
     }
 
-    const unsigned int width = COLS;
-    const unsigned int height = LINES;
+    const unsigned int width = 20;
+    const unsigned int height = 20;
 
     refresh();
 
     Game *game = new Game(width, height, Node(width / 2, height / 2, Direction::NONE));
-    while (true)
+    while (game->notEnded())
     {
         game->printField();
         game->getInput();
-        delay_output(50);
+        delay_output(80);
     }
 
     char c = getch();
@@ -35,6 +37,6 @@ int main()
     clear();         // Clear the screen
     attroff(A_BOLD); // Disable BOLD font
     endwin();        // Close the Window
-
+    // delete game;
     return 0;
 }
